@@ -47,6 +47,7 @@ const getUser = async(req,res)=>{
                 status: "failed",
                 message:"user not found"
             })
+            return
         }
         res.status(200).json({
             status:"success",
