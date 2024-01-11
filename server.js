@@ -4,6 +4,7 @@ const app = express()
 const db = require("./database/models/index")
 const userRouter = require("./router/user")
 const morgan = require("morgan")
+const cors = require("cors")
 
 const port = 4000
 db.sequelize.authenticate()
@@ -14,6 +15,7 @@ db.sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 app.use(express.json())
+app.use(cors())
 app.use(morgan("dev"))
 app.get("/",(req,res)=>{
     res.status(200).json({
